@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi');
-const {validateBody} = require('../middlewares/route');
+const { validateBody } = require('../middlewares/route');
 
 function validateCreateUser(req, res, next) {
     return validateBody(Joi.object().keys({
@@ -10,4 +10,12 @@ function validateCreateUser(req, res, next) {
     }))(req, res, next);
 }
 
-module.exports = {validateCreateUser};
+function validateCreatePet(req, res, next) {
+    return validateBody(Joi.object().keys({
+        name: Joi.string().required().description('Pet name'),
+        age: Joi.number().integer().required().description('Pet age'),
+        colour: Joi.string().required().description('Pet colour'),
+    }))(req, res, next);
+}
+
+module.exports = { validateCreateUser, validateCreatePet };

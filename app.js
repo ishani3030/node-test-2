@@ -6,6 +6,7 @@ const {ValidationError, NotFoundError} = require('./lib/errors');
 
 // To connect mongoDB
 mongoose.connect(`mongodb://localhost/test`, {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useFindAndModify', true);
 
 const app = express();
 const port = 3000;
