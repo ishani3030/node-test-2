@@ -6,10 +6,9 @@ const app = require('../app');
 const expect = chai.expect;
 
 chai.use(chaiAsPromised);
-
 describe('functional - user', () => {
   it('should fail to create a user without a firstName', async () => {
-    const res = await request(app).post('/users').send({
+    const res = await request(app).post('/user').send({
       lastName: 'Smith',
       age: '16',
       profession: 'gamer',
@@ -25,7 +24,7 @@ describe('functional - user', () => {
       age: 16,
       profession: 'gamer',
     };
-    const res = await request(app).post('/users').send(user);
+    const res = await request(app).post('/user').send(user);
     expect(res.status).to.equal(201);
     expect(res.body.firstName).to.equal(user.firstName);
     expect(res.body.lastName).to.equal(user.lastName);
