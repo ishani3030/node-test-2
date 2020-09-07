@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
+const openApiDocumentation = require('./apiDocs.json');
 
 const routes = require('./routes');
 const {ValidationError, NotFoundError} = require('./lib/errors');
@@ -33,5 +35,7 @@ app.listen(port, () => {
 process.on('uncaughtException', function (err) {
   console.log(err);
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
 module.exports = app;

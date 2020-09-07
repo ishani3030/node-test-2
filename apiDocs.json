@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "NodeJs Test",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Pets",
+      "description": "API for Pets"
+    },
+    {
+      "name": "Users",
+      "description": "API for Users"
+    }
+  ],
+  "paths": {
+    "/pet": {
+      "get": {
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "_id": "5f5637c8d75ef14790187e2f",
+                    "name": "Cat",
+                    "age": 6,
+                    "colour": "black",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f5637c8d75ef14790187e30",
+                    "name": "Horse",
+                    "age": 6,
+                    "colour": "black",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f5637c8d75ef14790187e32",
+                    "name": "sheep",
+                    "age": 6,
+                    "colour": "yellow",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f563850915f5d3bb8595676",
+                    "name": "Cat",
+                    "age": 6,
+                    "colour": "black",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f563850915f5d3bb8595677",
+                    "name": "Horse",
+                    "age": 6,
+                    "colour": "black",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f563850915f5d3bb8595679",
+                    "name": "sheep",
+                    "age": 6,
+                    "colour": "yellow",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "5f563850915f5d3bb859567a",
+                    "name": "squirrel",
+                    "age": 6,
+                    "colour": "gray",
+                    "__v": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pets"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": {
+                "name": "Cat",
+                "age": 6,
+                "colour": "black"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "_id": "5f5647577cdd242f8c7b91f6",
+                  "name": "Cat",
+                  "age": 6,
+                  "colour": "black",
+                  "__v": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pet/{id}": {
+      "get": {
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "_id": "5f5637c8d75ef14790187e2f",
+                  "name": "Cat",
+                  "age": 6,
+                  "colour": "black",
+                  "__v": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Pet not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "success"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Pet not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
